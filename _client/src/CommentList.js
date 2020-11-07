@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react'
 
 import axios from 'axios'
 
-export default ({postId}) => {
+export default ({comments}) => {
 
-    const [comments , setComments] = useState([])
+    // console.log(comments)
+    // const [comments , setComments] = useState([])
 
+    /*
     const fetchDAta = async () => {
         const res = await axios.get(`http://localhost:4001/posts/${postId}/comments`)
 
@@ -16,6 +18,7 @@ export default ({postId}) => {
 
         fetchDAta()
     }, [])
+    */
 
 
     const renderedComments = comments.map(comment =>{

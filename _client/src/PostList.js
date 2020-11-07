@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+
 import axios from 'axios'
 
 import CommentCreate from './CommentCreate'
@@ -10,8 +11,10 @@ export default () => {
     const [posts, setPosts] = useState({})
 
     const fetchPosts = async () => {
-        const res = await axios.get('http://localhost:4000/posts')
+        const res = await axios.get('http://localhost:4002/posts')
     
+        // console.log(res.data)
+
         setPosts(res.data)
        
     }
@@ -30,14 +33,14 @@ export default () => {
                     {post.title}
                 </h3>
             </div>
-            <CommentList postId={post.id}/>
+            <CommentList  comments={post.comments} />
             <CommentCreate postId={post.id} />
         </div>
     })
 
 
     
-    console.log(posts)
+    // console.log(posts)
 
     return <div className="d-flex flex-row flex-wrap justify-content-between">
         {renderedPosts}

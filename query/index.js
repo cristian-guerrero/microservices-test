@@ -34,6 +34,8 @@ app.post('/events', (req, res) => {
 
     const { type, data } = req.body
 
+    console.log(type, data)
+
     if (type === 'PostCreated') {
 
         const { id, title } = data
@@ -48,7 +50,7 @@ app.post('/events', (req, res) => {
         posts[postId].comments.push({ id, content })
     }
 
-    res.send({})
+    res.send(posts)
 
 })
 

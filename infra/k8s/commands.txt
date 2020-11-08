@@ -1,0 +1,6 @@
+
+kubectl apply -f event-bus-depl.yaml  
+
+kubectl rollout restart deployment posts-depl
+
+kubectl rollout restart deployment event-bus-depl

@@ -9,7 +9,7 @@ video 53
 # docker run microservice/posts sh
 # docker restart
 # docker exec -it container_id
-
+#  docker push guerrerocristian/posts # subir imagen a docker hub
 //-- -- kubernetes -------
 kubectl apply -f posts.yaml # crea una objeto de configuración (en este caso de pods en la carpeta infra/k8s)
 kubectl get pods # muestra la lista de los pods creados 
@@ -23,6 +23,8 @@ kubernetes service: se encarga de dar acceso a los contenedores corriendo dentro
 
 # kubernetes commands
 
+#kubernetes pods
+
 kubectl get pods
 kubectl exec -it [pod_name] [cmd]
 kubectl logs [pod_name]
@@ -30,12 +32,17 @@ kubectl delete pod [pod_name]
 kubectl apply -f [config file name ]
 kubectl describe pod [pod_name]
 
+#kubernetes deployments
+
 kubectl get deployments
 kubectl describe deploiment [depl name]
 kubectl apply -f [config file name ]
 kubectl delete deploiment [depl_name]
+kubectl rollout restart deployment [depl name ]
 
-
-
-
+#kubernetes services
+cluster ip: permite el acceso de un pod a otro a traves de una url 
+node port: permite que el pod sea accesible desde el exterior (propositos de desarrollo )
+load balancer: permite que los pods sean accesibles desde afuera del cluster
+external name: redirecciona una peticion interna del cluster a una CNAME
 

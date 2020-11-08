@@ -5,6 +5,7 @@ const root = process.cwd()
 
 init(root)
 
+// script from: https://stackoverflow.com/questions/31773546/the-best-way-to-run-npm-install-for-nested-folders
 
 function performCommand(folder) {
     // console.log(folder)

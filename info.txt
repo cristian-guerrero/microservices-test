@@ -11,12 +11,31 @@ video 53
 # docker exec -it container_id
 
 //-- -- kubernetes -------
+kubectl apply -f posts.yaml # crea una objeto de configuración (en este caso de pods en la carpeta infra/k8s)
+kubectl get pods # muestra la lista de los pods creados 
 kubectl version
-kubctl permite interactuar con el cluster de kubernetes
+kubectl permite interactuar con el cluster de kubernetes
 kubernetes cluster: es una coleccion de nodos y un master para manejarlos
 kubernetes pod : es un conjunto de contenedores dentro de un node
 kubernetes node : es una maquina física o virtual
 kubernetes deployment: se encarga de que los pods esten corriendo correctamente (arranca reinicia cuando es necesario) (monitorea pods identicos con los mismos contenedores dentro )
 kubernetes service: se encarga de dar acceso a los contenedores corriendo dentro de un pod dentro de un node (ofrece una url para acceder al contenedor)
+
+# kubernetes commands
+
+kubectl get pods
+kubectl exec -it [pod_name] [cmd]
+kubectl logs [pod_name]
+kubectl delete pod [pod_name]
+kubectl apply -f [config file name ]
+kubectl describe pod [pod_name]
+
+kubectl get deployments
+kubectl describe deploiment [depl name]
+kubectl apply -f [config file name ]
+kubectl delete deploiment [depl_name]
+
+
+
 
 

@@ -27,6 +27,9 @@ posts = {
 }
 */
 
+// const eventBusURL = 'http://localhost:4005/events'
+const eventBusURL = 'http://event-bus-clusterip-srv:4005/events'
+
 const handleEvent = (type, data) => {
 
     if (type === 'PostCreated') {
@@ -75,10 +78,12 @@ app.post('/events', (req, res) => {
 })
 
 
+
+
 app.listen(4002, async () => {
     console.log('query running in localhost:4002')
 
-    const res = await axios.get('http://localhost:4005/events')
+    const res = await axios.get(eventBusURL)
 
     for(const e of res.data) {
         console.log('Processing event: ', e.type)

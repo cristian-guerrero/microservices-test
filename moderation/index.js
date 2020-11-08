@@ -10,6 +10,9 @@ const app = express()
 app.use(bodyParse.json())
 
 
+// const eventBusURL = 'http://localhost:4005/events'
+const eventBusURL = 'http://event-bus-clusterip-srv:4005/events'
+
 
 app.post('/events', async (req, res) => {
 
@@ -23,7 +26,7 @@ app.post('/events', async (req, res) => {
 
         console.log('new comment status : ' + status)
 
-        await axios.post('http://localhost:4005/events', {
+        await axios.post(eventBusURL, {
             type: 'CommentModerated',
             data: {
                 id: data.id,

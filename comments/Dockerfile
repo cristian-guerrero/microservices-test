@@ -10,3 +10,6 @@ CMD ["yarn", "start"]
 
 #docker build -t microservice/comments .
 # docker run  -d  -p 4001:4001  --name posts-service microservice/comments
+
+# docker build -t guerrerocristian/comments:development . 
+# docker push  guerrerocristian/comments:development 

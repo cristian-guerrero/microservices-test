@@ -18,6 +18,8 @@ app.get('/posts/:id/comments', (req, res) => {
 
 })
 
+// const eventBusURL = 'http://localhost:4005/events'
+const eventBusURL = 'http://event-bus-clusterip-srv:4005/events'
 
 app.post('/posts/:id/comments', async (req, res) => {
 
@@ -30,7 +32,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
   commentsByPostId[req.params.id] = comments
 
-  await axios.post('http://localhost:4005/events', {
+  await axios.post(eventBusURL, {
     type: 'CommentCreated',
     data: {
       id: commentId,
@@ -64,7 +66,7 @@ app.post('/events', async (req, res) => {
 
     console.log('new comment status --', status)
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post(eventBusURL, {
       type: 'CommentUpdated',
       data: {
         id, postId, content, status
@@ -78,5 +80,6 @@ app.post('/events', async (req, res) => {
 
 
 app.listen(4001, () => {
+  console.log('comments version development-0.0.1')
   console.log('Comments server running in localhost:4001')
 })

@@ -38,7 +38,7 @@ kubectl get deployments
 kubectl describe deploiment [depl name]
 kubectl apply -f [config file name ]
 kubectl delete deploiment [depl_name]
-kubectl rollout restart deployment [depl name ]
+kubectl rollout restart deployment [depl name ] (carga cambios en imagen para un development ya desplegado)
 
 #kubernetes services
 cluster ip: permite el acceso de un pod a otro a traves de una url 

@@ -6,13 +6,14 @@ const axios = require ('axios')
 
 const cors = require('cors')
 
-
 const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-
 const posts = {}
+
+// const eventBusURL = 'http://localhost:4005/events'
+const eventBusURL = 'http://event-bus-clusterip-srv:4005/events'
 
 app.get('/posts', (req, res) => {
 
@@ -25,7 +26,7 @@ app.post('/posts', async  (req, res) => {
 
     posts[id] =  { id, title }
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post(eventBusURL, {
         type: 'PostCreated',
         data: {
             id, title

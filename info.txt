@@ -4,8 +4,19 @@ video 53
 // -- docker and kubernetes --
 
 # docker pull node:lts-alpine
-# docker build -t microservice/posts .
+# docker build -t microservice/posts . #nombre de la imagen
 # docker run  -d  -p 4000:4000  --name posts-service microservice/posts
 # docker run microservice/posts sh
 # docker restart
 # docker exec -it container_id
+
+//-- -- kubernetes -------
+kubectl version
+kubctl permite interactuar con el cluster de kubernetes
+kubernetes cluster: es una coleccion de nodos y un master para manejarlos
+kubernetes pod : es un conjunto de contenedores dentro de un node
+kubernetes node : es una maquina física o virtual
+kubernetes deployment: se encarga de que los pods esten corriendo correctamente (arranca reinicia cuando es necesario) (monitorea pods identicos con los mismos contenedores dentro )
+kubernetes service: se encarga de dar acceso a los contenedores corriendo dentro de un pod dentro de un node (ofrece una url para acceder al contenedor)
+
+

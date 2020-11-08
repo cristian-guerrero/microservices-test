@@ -1,5 +1,11 @@
 create-react-app my-app
+video 53
 
 // -- docker and kubernetes --
 
-  
+# docker pull node:lts-alpine
+# docker build -t microservice/posts .
+# docker run  -d  -p 4000:4000  --name posts-service microservice/posts
+# docker run microservice/posts sh
+# docker restart
+# docker exec -it container_id

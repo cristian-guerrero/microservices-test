@@ -10,3 +10,5 @@ CMD ["yarn", "start"]
 
 # docker build -t microservice/event-bus .
 # docker run  -d  -p 4005:4005  --name posts-service microservice/event-bus
+
+# docker build -t guerrerocristian/event-bus:development . 

@@ -31,6 +31,7 @@ app.post('/events', async (req, res) => {
 
 app.get('/events', (req, res) => {
 
+    console.log('version development-0.0.2')
     res.send(events)
 
 })

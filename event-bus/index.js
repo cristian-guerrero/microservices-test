@@ -13,18 +13,19 @@ const urls = {
     dev: {
         post: 'http://localhost:4000/events',
         comments: 'http://localhost:4001/events',
-        query: 'http://localhost:4003/events',
+        query: 'http://localhost:4002/events',
         moderation: 'http://localhost:4003/events'
     },
     kube: {
         post: 'http://posts-clusterip-srv:4000/events',
-        comments: 'http://localhost:4001/events',
-        query: 'http://localhost:4003/events',
-        moderation: 'http://localhost:4003/events'
+        comments: 'http://comments-clusterip-srv:4001/events',
+        query: 'http://query-clusterip-srv:4002/events',
+        moderation: 'http://moderation-clusterip-srv:4003/events'
     }
 
 
 }
+const urlSelector = 'kube'
 
 app.post('/events', async (req, res) => {
     const event = req.body
@@ -35,13 +36,13 @@ app.post('/events', async (req, res) => {
     events.push(event)
 
     // post
-    axios.post(urls.kube.post, event)
+    axios.post(urls[urlSelector].post, event)
     // comments
-    // axios.post('http://localhost:4001/events', event)
+    axios.post(urls[urlSelector].comments, event)
     //query 
-    // axios.post('http://localhost:4002/events', event)
+    axios.post(urls[urlSelector].query, event)
     // moderation
-    // axios.post('http://localhost:4003/events', event)
+    axios.post(urls[urlSelector].moderation, event)
 
     res.send({ status: 'ok' })
 })

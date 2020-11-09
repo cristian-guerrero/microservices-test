@@ -22,6 +22,7 @@ kubernetes deployment: se encarga de que los pods esten corriendo correctamente 
 kubernetes service: se encarga de dar acceso a los contenedores corriendo dentro de un pod dentro de un node (ofrece una url para acceder al contenedor)
 
 # kubernetes commands
+kubectl apply -f .  # ejecuta todos los archivos de configuración en un directorio
 
 #kubernetes pods
 
@@ -46,4 +47,12 @@ node port: permite que el pod sea accesible desde el exterior (propositos de des
 load balancer: permite que los pods sean accesibles desde afuera del cluster
 external name: redirecciona una peticion interna del cluster a una CNAME
 kubectl apply -f [service config file ]
+
+// kubernete ingress 
+https://kubernetes.github.io/ingress-nginx/deploy/
+
+# for mac mandatory
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.0/deploy/static/provider/cloud/deploy.yaml
+for minikube
+# minikube addons enable ingress
 

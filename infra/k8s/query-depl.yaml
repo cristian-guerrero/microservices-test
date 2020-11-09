@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: query-depl
+spec: 
+  replicas: 1 # number o pods to create form some docker image
+  selector:
+    matchLabels:
+      app: query
+  template:
+    metadata:
+      labels:
+        app: query
+    spec:
+      containers:
+        - name: query
+          image: guerrerocristian/query:development
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: query-nodeport-srv
+spec:
+  type: NodePort
+  selector:
+    app: query
+  ports:
+    - name: query
+      protocol: TCP
+      port: 4002 # exposed port 
+      targetPort: 4002 # internal app port
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: query-clusterip-srv
+spec:
+  selector: 
+    app: query
+  type: ClusterIP # optional (defalul value is ClusterIP)
+  ports:
+    - name: query
+      protocol: TCP
+      port: 4002
+      targetPort: 4002

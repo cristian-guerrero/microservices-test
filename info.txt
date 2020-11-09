@@ -49,6 +49,8 @@ external name: redirecciona una peticion interna del cluster a una CNAME
 kubectl apply -f [service config file ]
 
 // kubernete ingress 
+ se debe crear un control de ingreso y un balanceador de cargas, esto se logra con ingress-nginx
+ 
 https://kubernetes.github.io/ingress-nginx/deploy/
 
 # for mac mandatory

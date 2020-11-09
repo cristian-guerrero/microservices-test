@@ -3,27 +3,34 @@ const fs = require('fs')
 const childProcess = require('child_process')
 const root = process.cwd()
 
+// let   arguments = defaultValue()
+// checkArguments()
+
 init(root)
+
 
 // script from: https://stackoverflow.com/questions/31773546/the-best-way-to-run-npm-install-for-nested-folders
 
 function performCommand(folder) {
+    let   arguments = defaultValue()
+
     // console.log(folder)
-    const hasPackageJson = fs.existsSync(path.join(folder, 'package.json'))
+    const hasPackageJson = fs.existsSync(path.join(folder, 'Dockerfile'))
 
     if (hasPackageJson && folder !== root) {
+        const command = `docker build -t  ${arguments.dockerUser}/${path.relative(root, folder)}:${arguments.version} .`
         console.log('===================================================================')
-        console.log(`Performing "yarn" inside-> ${path.relative(root, folder)}`)
+        console.log(`Performing -> ${command}`)
         console.log('===================================================================')
 
-        yarnInstall(folder)
+        yarnInstall(folder, command)
     }
 
 }
 
 // Performs `yarn`
-function yarnInstall(where) {
-    childProcess.execSync('yarn', { cwd: where, env: process.env, stdio: 'inherit' })
+function yarnInstall(where, command) {
+    childProcess.execSync(command, { cwd: where, env: process.env, stdio: 'inherit' })
 }
 
 // Lists subfolders in a folder
@@ -43,5 +50,34 @@ function init(folder) {
     // Recurse into subfolders
     for (let subfolder of subfolders(folder)) {
         performCommand(subfolder)
+    }
+}
+
+
+function checkArguments() {
+    const length = process.argv.length
+    // console.log(process.argv);
+    // console.log(process.argv.length)
+    // process.argv.slice(2)
+
+    if (length  === 4) {
+        //  set default values
+        console.log( 'new arguments')
+        arguments.dockerUser = process.argv[2]
+        arguments.version = process.argv[3]
+    }
+    if (length > 4) {
+        throw new Error('params required are docekr user and image version')
+
+    }
+
+    console.log('docker options ->', arguments)
+}
+
+function defaultValue () {
+
+    return {
+        dockerUser: 'guerrerocristian',
+        version: 'development'
     }
 }

@@ -1,0 +1,14 @@
+callenge 1: manejo de datos entre servicios, como se almacenan los datos dentro de un servicio y como se comparten estos datos entre servicios.
+	- un servicio nunca accede a la base de datos de otro servicio directamente
+	- cada servicio puede tener una base de datos si asi se necesita 
+	- si se utiliza solo una base de datos para todos los servicios, cuando ocurra algo en la base de datos todos los microservicios dejaran de funcionar
+	- con bases de datos separadas se pede escalar mas eficientemente la base de datos del microservicio que necesite mas rendimiento
+	- el mas exitos patron de diseño de aplicaciones basadas en microservicios esta constituida por una base de datos por cada servicios
+Challenge 1 : Problemas con el manejo de datos
+	- Comunicación sincrona y asincrona
+	- Sync la communicación se realiza haciendo peticiones(request) de un servicio a otro, no necesariamente tiene que ser una peticion http
+	- la comunicación sincrona (Sync) genera dependencia entre los servicios y la respuesta es tan rapida como la respuesta del servicio mas lento (servicio dependencia) esto hace que las desventajas sean mayores que  las ventajas
+
+	- Async
+		- Event Bus
+		

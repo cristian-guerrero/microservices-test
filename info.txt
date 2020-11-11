@@ -1,5 +1,5 @@
 create-react-app my-app
-video 81
+video 88
 
 // -- docker and kubernetes --
 
@@ -63,3 +63,6 @@ pirmer se debe de applicar el ingress.nginxy
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.0/deploy/static/provider/cloud/deploy.yaml
 despues se debe apicar el archivo ingress-srv.yaml
 mac = /etc/host
+
+//----
+https://skaffold.dev/

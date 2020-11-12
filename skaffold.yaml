@@ -1,0 +1,59 @@
+apiVersion: skaffold/v2beta9
+kind: Config
+
+deploy: 
+  kubectl:
+    manifests:
+    - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: guerrerocristian/client:development 
+      context: client #directory
+      docker:
+        dockerfile: Dockerfile
+      sync: 
+        manua:
+          - src: 'src/**/*.js'
+            dest: .
+    - image: guerrerocristian/commnets:development
+      context: commnets #directory
+      docker:
+        dockerfile: Dockerfile
+      sync: 
+        manua:
+          - src: '*.js'
+            dest: .
+    - image: guerrerocristian/event-bus:development
+      context: event-bus #directory
+      docker:
+        dockerfile: Dockerfile
+      sync: 
+        manua:
+          - src: '*.js'
+            dest: .
+    - image: guerrerocristian/moderation:development
+      context: moderation #directory
+      docker:
+        dockerfile: Dockerfile
+      sync: 
+        manua:
+          - src: '*.js'
+            dest: .
+    - image: guerrerocristian/posts:development
+      context: posts #directory
+      docker:
+        dockerfile: Dockerfile
+      sync: 
+        manua:
+          - src: '*.js'
+            dest: .
+    - image: guerrerocristian/query:development
+      context: query #directory
+      docker:
+        dockerfile: Dockerfile
+      sync: 
+        manua:
+          - src: '*.js'
+            dest: .

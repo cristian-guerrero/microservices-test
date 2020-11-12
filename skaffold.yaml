@@ -55,7 +55,8 @@ build:
       context: query #directory
       docker:
         dockerfile: Dockerfile
-      sync: 
-        infer:
-          - 'package.json'
-          - './'
+      sync:
+        manual:
+        # sync any `js` file into the app folder
+        - src: '**/*.js'
+          dest: /app

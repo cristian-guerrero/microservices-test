@@ -5,6 +5,7 @@ const cors = require('cors')
 const axios = require('axios')
 
 
+
 const app = express()
 
 app.use(bodyParser.json())
@@ -67,12 +68,12 @@ app.post('/events', (req, res) => {
 
 
 app.listen(4002, async () => {
-    console.log('query running in localhost:4002')
+    console.log('query running in localhost ->:4002')
 
     const res = await axios.get(eventBusURL)
 
     for(const e of res.data) {
-        console.log('Processing event: ', e.type)
+        console.log('Processing event ->: ', e.type)
         handleEvent(e.type, e.data)
     }
 

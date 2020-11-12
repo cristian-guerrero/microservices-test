@@ -49,8 +49,7 @@ build:
         dockerfile: Dockerfile
       sync: 
         infer:
-          - 'package.json'
-          - './'
+          - '**/*.js'
     - image: guerrerocristian/query
       context: query #directory
       docker:

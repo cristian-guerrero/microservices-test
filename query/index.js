@@ -68,7 +68,7 @@ app.post('/events', (req, res) => {
 
 
 app.listen(4002, async () => {
-    console.log('query running in localhost ->:4002')
+    console.log('query running in localhost:4002')
 
     const res = await axios.get(eventBusURL)
 

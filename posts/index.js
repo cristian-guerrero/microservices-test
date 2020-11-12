@@ -44,6 +44,6 @@ app.post('/events', (req, res) => {
 })
 
 app.listen(4000, () => {
-    console.log('version 0.0.4')
+    console.log('version 0.0.6')
     console.log('Listening on localhost:4000')
 })

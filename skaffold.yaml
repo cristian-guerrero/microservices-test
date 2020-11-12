@@ -6,54 +6,56 @@ deploy:
     manifests:
     - ./infra/k8s/*
 build:
+  tagPolicy:
+    sha256: {}
   local:
     push: false
   artifacts:
-    - image: guerrerocristian/client:development 
+    - image: guerrerocristian/client
       context: client #directory
       docker:
         dockerfile: Dockerfile
-      sync: 
-        manua:
-          - src: 'src/**/*.js'
-            dest: .
-    - image: guerrerocristian/commnets:development
-      context: commnets #directory
+      sync:
+        infer:
+          - 'package.json'
+          - './'
+    - image: guerrerocristian/commnets
+      context: comments #directory
       docker:
         dockerfile: Dockerfile
       sync: 
-        manua:
-          - src: '*.js'
-            dest: .
-    - image: guerrerocristian/event-bus:development
+        infer:
+          - 'package.json'
+          - './'
+    - image: guerrerocristian/event-bus
       context: event-bus #directory
       docker:
         dockerfile: Dockerfile
       sync: 
-        manua:
-          - src: '*.js'
-            dest: .
-    - image: guerrerocristian/moderation:development
+        infer:
+          - 'package.json'
+          - './'
+    - image: guerrerocristian/moderation
       context: moderation #directory
       docker:
         dockerfile: Dockerfile
       sync: 
-        manua:
-          - src: '*.js'
-            dest: .
-    - image: guerrerocristian/posts:development
+        infer:
+          - 'package.json'
+          - './'
+    - image: guerrerocristian/posts
       context: posts #directory
       docker:
         dockerfile: Dockerfile
       sync: 
-        manua:
-          - src: '*.js'
-            dest: .
-    - image: guerrerocristian/query:development
+        infer:
+          - 'package.json'
+          - './'
+    - image: guerrerocristian/query
       context: query #directory
       docker:
         dockerfile: Dockerfile
       sync: 
-        manua:
-          - src: '*.js'
-            dest: .
+        infer:
+          - 'package.json'
+          - './'

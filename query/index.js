@@ -12,20 +12,6 @@ app.use(cors())
 
 
 const posts = {}
-/*
-posts = {
- 'iddkekd': {
-     id: 'iddkekd',
-     title: 'post title',
-     comments:  [
-         {
-             id: 'adsfasdf',
-             content: 'content'
-         }
-     ]
- }   
-}
-*/
 
 // const eventBusURL = 'http://localhost:4005/events'
 const eventBusURL = 'http://event-bus-clusterip-srv:4005/events'

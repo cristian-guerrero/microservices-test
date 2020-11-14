@@ -43,5 +43,5 @@ app.post('/events', async (req, res) => {
 
 app.listen(4003, () => {
 
-    console.log('Moderation runnin in localhost:4003')
+    console.log('Moderation runnin in --> localhost:4003')
 })

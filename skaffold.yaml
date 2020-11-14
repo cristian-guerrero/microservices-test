@@ -16,39 +16,46 @@ build:
       docker:
         dockerfile: Dockerfile
       sync:
-        infer:
-          - 'package.json'
-          - './'
+        manual:
+        # sync any `js` file into the app folder
+          - src: '**/*.js'
+            dest: .
     - image: guerrerocristian/commnets
       context: comments #directory
       docker:
         dockerfile: Dockerfile
-      sync: 
-        infer:
-          - '**/*.js'
+      sync:
+        manual:
+        # sync any `js` file into the app folder
+          - src: '**/*.js'
+            dest: .
     - image: guerrerocristian/event-bus
       context: event-bus #directory
       docker:
         dockerfile: Dockerfile
-      sync: 
-        infer:
-          - 'package.json'
-          - './'
+      sync:
+        manual:
+        # sync any `js` file into the app folder
+          - src: '**/*.js'
+            dest: .
     - image: guerrerocristian/moderation
       context: moderation #directory
       docker:
         dockerfile: Dockerfile
-      sync: 
-        infer:
-          - 'package.json'
-          - './'
+      sync:
+        manual:
+        # sync any `js` file into the app folder
+          - src: '**/*.js'
+            dest: .
     - image: guerrerocristian/posts
       context: posts #directory
       docker:
         dockerfile: Dockerfile
-      sync: 
-        infer:
-          - '**/*.js'
+      sync:
+        manual:
+        # sync any `js` file into the app folder
+          - src: '**/*.js'
+            dest: .
     - image: guerrerocristian/query
       context: query #directory
       docker:
@@ -56,5 +63,5 @@ build:
       sync:
         manual:
         # sync any `js` file into the app folder
-        - src: '**/*.js'
-          dest: /app
+          - src: '**/*.js'
+            dest: .
